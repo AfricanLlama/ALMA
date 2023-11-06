@@ -346,13 +346,13 @@ def load_model(data_args, model_args, training_args, tokenizer, logger):
     
     # Embedding initlization for additional tokens
     import numpy as np
-    if data_args.input_embeddings_dir:
-        input_embeddings = torch.from_numpy(np.load(data_args.input_embeddings_dir))
+    if model_args.input_embeddings_dir:
+        input_embeddings = torch.from_numpy(np.load(model_args.input_embeddings_dir))
         assert len(tokenizer) - embedding_size == input_embeddings.size()[0]
         model.get_input_embeddings().weight.data[embedding_size:] = input_embeddings
 
-    if data_args.output_embeddings_dir:
-        output_embeddings = torch.from_numpy(np.load(data_args.output_embeddings_dir))
+    if model_args.output_embeddings_dir:
+        output_embeddings = torch.from_numpy(np.load(model_args.output_embeddings_dir))
         assert len(tokenizer) - embedding_size == input_embeddings.size()[0]
         model.get_output_embeddings().weight.data[embedding_size:] = output_embeddings
 
