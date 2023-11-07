@@ -1,4 +1,4 @@
-OUTPUT_DIR=${1:-"./outputs-llama-base/"}
+OUTPUT_DIR=${1:-"./outputs-llama-base"}
 TEST_PAIRS=${2:-"yo-en,en-yo"}
 export HF_DATASETS_CACHE=".cache/huggingface_cache/datasets"
 export TRANSFORMERS_CACHE=".cache/models/"

@@ -2,7 +2,7 @@ OUTPUT_DIR=${1}
 TEST_PAIRS=${2}
 
 ## Evaluation
-source ~/.bashrc
+source ~/miniconda3/bin/activate
 conda activate alma-eval
 for pair in ${TEST_PAIRS//,/ }; do
     src=$(echo ${pair} | cut -d "-" -f 1)
