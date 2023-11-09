@@ -125,7 +125,7 @@ def load_mmt_dataset(pairs, data_args, model_args, training_args, logger):
         h_suffix = f"-{data_args.suffix}" if data_args.suffix else ""
         train_file = os.path.join(data_args.mmt_data_path, pair_dir, f"train.{first_lang}-{second_lang}{h_suffix}.json")
         valid_file = os.path.join(data_args.mmt_data_path, pair_dir, f"valid.{first_lang}-{second_lang}.json")
-        test_file = os.path.join(data_args.mmt_data_path, pair_dir, f"test.{src_lang}-{tgt_lang}.json")
+        test_file = os.path.join(data_args.mmt_data_path, pair_dir, f"test.{first_lang}-{second_lang}.json")
         
         if not os.path.isfile(train_file):
             logger.info(f"Warning: training file {train_file} does not exist!")
