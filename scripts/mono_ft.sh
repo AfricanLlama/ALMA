@@ -1,13 +1,16 @@
-OUTPUT_DIR=${1:-"models/test-run"}
+OUTPUT_DIR=${1:-"./llama-2-7b-oscar-ft"}
 export HF_DATASETS_CACHE=".cache/huggingface_cache/datasets"
 export TRANSFORMERS_CACHE=".cache/models/"
 
 # random port between 30000 and 50000
-python run_llmmt.py \
-    --model_name_or_path ../../llama-lang-adapt/data/models/llama-2-7b-hf \
+port=$(( RANDOM % (50000 - 30000 + 1 ) + 30000 ))
+accelerate launch --main_process_port ${port} --config_file configs/deepspeed_train_config.yaml \
+     run_llmmt.py \
+    --model_name_or_path meta-llama/Llama-2-7b-hf \
     --oscar_data_path llama-lang-adapt/afromaft \
-    --oscar_data_lang xh,yo \
-    --interleave_probs "0.5,0.5" \
+    --oscar_data_lang en,yo \
+    --interleave_probs "0.5,0.5" \ # needs to be changed
+    # --streaming \ # afromaft doesn't support streaming
     --max_steps 600000 \
     --do_train \
     --low_cpu_mem_usage \
@@ -33,9 +36,3 @@ python run_llmmt.py \
     --overwrite_output_dir \
     --report_to none
 
-#     --oscar_data_path oscar-corpus/OSCAR-2301 \
-#     --oscar_data_lang en,wuu \
-
-#     --oscar_data_path llama-lang-adapt/afromaft \
-#     --oscar_data_lang en,yo \
-# --streaming \
