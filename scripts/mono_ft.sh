@@ -9,7 +9,7 @@ accelerate launch --main_process_port ${port} --config_file configs/deepspeed_tr
     --model_name_or_path meta-llama/Llama-2-7b-hf \
     --oscar_data_path llama-lang-adapt/afromaft \
     --oscar_data_lang en,yo \
-    --interleave_probs "0.5,0.5" \ # needs to be changed
+    --interleave_probs "0.5,0.5" \ # needsq to be changed
     # --streaming \ # afromaft doesn't support streaming
     --max_steps 600000 \
     --do_train \
