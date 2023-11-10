@@ -1,23 +1,3 @@
-<p align="center">
-    <img alt="ALMA" src="alma_logo.png" width="500" height="203">
-</p>
-
-<div align="center">
-    
-# ALMA: Advanced Language Model-based translator
-</div>
-
-<p align="center">
-<a href="LICENSE" alt="MIT License"><img src="https://img.shields.io/badge/license-MIT-FAD689.svg" /></a>
-<a href="https://arxiv.org/abs/2309.11674" alt="Paper Link"><img src="https://img.shields.io/badge/paper-link-D9AB42" /></a>
-<a href="https://notes.aimodels.fyi/alma-a-new-training-method-that-boosts-translation-performance-for-large-language-models/"><img alt="Summary Link" src="https://img.shields.io/badge/summary-link-F6C555" /></a>
-<a href="https://www.clsp.jhu.edu/" alt="jhu"><img src="https://img.shields.io/badge/Johns_Hopkins_University-BEC23F" /></a>
-<a href="https://www.microsoft.com/en-us/research/" alt="MSlogo"><img src="https://img.shields.io/badge/Microsoft-B1B479?logo=microsoft" /></a>
-<a href="https://twitter.com/fe1ixxu">
-  <img src="https://img.shields.io/twitter/follow/haoranxu?style=social&logo=twitter"
-      alt="follow on Twitter"></a>
-</p>
-
 **ALMA** (**A**dvanced **L**anguage **M**odel-based tr**A**nslator) is a many-to-many LLM-based translation model, which adopts a new translation model paradigm: it begins with fine-tuning on monolingual data and is further optimized using high-quality parallel data. This two-step fine-tuning process ensures strong translation performance. 
 
 Please find more details in our [paper](https://arxiv.org/abs/2309.11674) or the [summary](https://notes.aimodels.fyi/alma-a-new-training-method-that-boosts-translation-performance-for-large-language-models/) of the paper.
@@ -46,10 +26,6 @@ Please find more details in our [paper](https://arxiv.org/abs/2309.11674) or the
   - Also support LLaMA-1, LLaMA-2, OPT, Faclon, BLOOM, MPT
   - LoRA Fine-tuning
   - Monolingual data fine-tuning, parallel data fine-tuning
-
-<p align="center">
-<img src="alma.jpg" width="700" height="560">
-</p>
 
 # Download ALMA Models 🚀
 
