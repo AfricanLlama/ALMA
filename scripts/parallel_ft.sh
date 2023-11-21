@@ -18,13 +18,13 @@ accelerate launch --main_process_port ${port} --config_file configs/deepspeed_tr
     --fp16 \
     --learning_rate 2e-5 \
     --weight_decay 0.01 \
-    --gradient_accumulation_steps 4 \
+    --gradient_accumulation_steps 8 \
     --lr_scheduler_type inverse_sqrt \
     --warmup_ratio 0.01 \
     --ignore_pad_token_for_loss \
     --ignore_prompt_token_for_loss \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
+    --per_device_train_batch_size 2 \
+    --per_device_eval_batch_size 2 \
     --evaluation_strategy steps \
     --eval_steps 0.1 \
     --save_strategy steps \
@@ -40,7 +40,7 @@ accelerate launch --main_process_port ${port} --config_file configs/deepspeed_tr
     --max_source_length 256 \
     --seed 42 \
     --overwrite_output_dir \
-    --num_beams 5 \
+    --num_beams 1 \
     --ddp_timeout 999999 \
     --report_to none \
     --overwrite_cache 
