@@ -1,3 +1,29 @@
+# Environment Setup 🔧
+Execute the given command, and it will set up two virtual environments: `alma` and `comet`. Use `alma` for both model training and test generation, while `comet` is specifically designed for evaluation purposes (BLEU and COMET).
+```
+conda create -n alma python=3.8
+conda activate alma
+```
+If you use **Nvidia GPUs**, install torch with cuda 11.8
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+If you use **AMD GPUs**, install torch with ROCm 5.4.2
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
+```
+Then install other dependencies:
+```
+bash install_alma.sh
+```
+and install env `comet`:
+```
+conda create -n comet python=3.8
+conda activate comet
+pip install unbabel-comet
+pip install sacrebleu[ja]
+```
+
 **ALMA** (**A**dvanced **L**anguage **M**odel-based tr**A**nslator) is a many-to-many LLM-based translation model, which adopts a new translation model paradigm: it begins with fine-tuning on monolingual data and is further optimized using high-quality parallel data. This two-step fine-tuning process ensures strong translation performance. 
 
 Please find more details in our [paper](https://arxiv.org/abs/2309.11674) or the [summary](https://notes.aimodels.fyi/alma-a-new-training-method-that-boosts-translation-performance-for-large-language-models/) of the paper.
@@ -75,32 +101,6 @@ The general translation prompt is:
 Translate this from <source language name> into <target language name>:
 <source language name>: <source language sentence>
 <target language name>:
-```
-
-# Environment Setup 🔧
-Execute the given command, and it will set up two virtual environments: `alma` and `comet`. Use `alma` for both model training and test generation, while `comet` is specifically designed for evaluation purposes (BLEU and COMET).
-```
-conda create -n alma python=3.8
-conda activate alma
-```
-If you use **Nvidia GPUs**, install torch with cuda 11.8
-```
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-If you use **AMD GPUs**, install torch with ROCm 5.4.2
-```
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
-```
-Then install other dependencies:
-```
-bash install_alma.sh
-```
-and install env `comet`:
-```
-conda create -n comet python=3.8
-conda activate comet
-pip install unbabel-comet
-pip install sacrebleu[ja]
 ```
 
 # Evaluation 💻
