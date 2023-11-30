@@ -1,34 +1,35 @@
 OUTPUT_DIR=${1:-"./pretrain-en-yor-default-lora"}
 pairs=${2:-"en-yo,yo-en"}
 LORA_RANK=${3:-"16"}
+export CUDA_LAUNCH_BLOCKING=1
 export HF_DATASETS_CACHE=".cache/huggingface_cache/datasets"
 export TRANSFORMERS_CACHE=".cache/models/"
 
 # random port between 30000 and 50000
 port=$(( RANDOM % (50000 - 30000 + 1 ) + 30000 ))
 
-accelerate launch --main_process_port ${port} --config_file configs/deepspeed_train_config.yaml \
-     run_llmmt.py \
+## Generation
+python \
+    run_llmmt.py \
     --model_name_or_path llama-lang-adapt/pretrain-en-yor-default \
     --mmt_data_path  ./data/ \
     --use_peft \
     --lora_rank ${LORA_RANK} \
     --do_train \
     --do_eval \
-    --do_predict \
     --language_pairs ${pairs} \
     --load_best_model_at_end \
     --low_cpu_mem_usage \
     --fp16 \
     --learning_rate 2e-3 \
     --weight_decay 0.01 \
-    --gradient_accumulation_steps 4 \
+    --gradient_accumulation_steps 1 \
     --lr_scheduler_type inverse_sqrt \
     --warmup_ratio 0.01 \
     --ignore_pad_token_for_loss \
     --ignore_prompt_token_for_loss \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 1 \
     --evaluation_strategy steps \
     --eval_steps 0.05 \
     --save_strategy steps \

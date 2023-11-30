@@ -148,7 +148,7 @@ def load_mmt_dataset(pairs, data_args, model_args, training_args, logger):
                 )
         if not os.path.isfile(test_file):
             logger.info(f"Warning: test file {test_file} does not exist!")
-        elif test_file not in seen_files and training_args.do_predict:
+        elif training_args.do_predict:
             test_raw_data[f"{src_lang}-{tgt_lang}"] = load_dataset(
                 "json",
                 data_files={"test": test_file},

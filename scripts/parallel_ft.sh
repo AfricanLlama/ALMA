@@ -11,7 +11,6 @@ accelerate launch --main_process_port ${port} --config_file configs/deepspeed_tr
     --mmt_data_path ./data/ \
     --do_train \
     --do_eval \
-    --do_predict \
     --language_pairs ${pairs} \
     --load_best_model_at_end \
     --low_cpu_mem_usage \
@@ -43,7 +42,4 @@ accelerate launch --main_process_port ${port} --config_file configs/deepspeed_tr
     --num_beams 1 \
     --ddp_timeout 999999 \
     --report_to none \
-    --overwrite_cache 
-
-## Evaluation (BLEU, COMET)
-bash ./evals/eval_generation.sh ${OUTPUT_DIR} ${pairs}
+    --overwrite_cache

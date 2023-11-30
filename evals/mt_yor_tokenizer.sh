@@ -25,5 +25,5 @@ python \
     --overwrite_output_dir \
     --multi_gpu_one_model 
 
-## Evaluation (CHRF++)
-bash ./evals/eval_generation_chrf.sh ${OUTPUT_DIR} ${TEST_PAIRS}
+## Evaluation
+bash ./evals/eval_generation.sh ${OUTPUT_DIR} ${TEST_PAIRS}
