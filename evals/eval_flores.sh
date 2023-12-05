@@ -1,5 +1,8 @@
-OUTPUT_DIR=${1:-"./outputs-pretrain-en-yor-tokenizer"}
-TEST_PAIRS=${2:-"en-yo,yo-en"}
+MODEL_NAME=${1}
+MODEL="${MODEL_NAME//\//-}"
+OUTPUT_DIR=./outputs-${MODEL}
+MODEL_PATH="/mnt/disk/llama-lang-adapt/data/models/${MODEL_NAME}"
+TEST_PAIRS=${2:-"yo-en,en-yo"}
 export HF_DATASETS_CACHE=".cache/huggingface_cache/datasets"
 export TRANSFORMERS_CACHE=".cache/models/"
 # random port between 30000 and 50000
@@ -8,7 +11,7 @@ port=$(( RANDOM % (50000 - 30000 + 1 ) + 30000 ))
 ## Generation
 python \
     run_llmmt.py \
-    --model_name_or_path "/mnt/disk/llama-lang-adapt/data/models/pretrain-en-yor-tokenizer" \
+    --model_name_or_path ${MODEL_PATH} \
     --do_predict \
     --low_cpu_mem_usage \
     --language_pairs ${TEST_PAIRS} \
