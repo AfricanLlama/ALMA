@@ -66,45 +66,57 @@ class SavePeftModelCallback(TrainerCallback):
         return control
 
 LANG_TABLE = {
+    "ar": "Arabic",
     "en": "English",
     "de": "German",
     "fr": "French",
     "cs": "Czech",
+    "ig": "Igbo",
     "is": "Icelandic",
     "zh": "Chinese",
     "ja": "Japanese",
+    "mg": "Malagasy",
     "ru": "Russian",
     "uk": "Ukrainian",
     "ha": "Hausa",
     "ro": "Romanian",
+    "sw": "Swahili",
     "yo": "Yoruba",
 }
 
 ## Prefix and suffix for prompt in target language (only from English to target language if the target is non-English)
 PREFIX = {
+    "ar": "ترجمة هذا من الإنجليزية إلى العربية:\nإنجليزي: ",
     "de": "Übersetzen Sie dies vom Englischen ins Deutsche:\nEnglisch: ",
     "fr": "Traduisez ceci de l'anglais vers le français :\nAnglais: ",
     "cs": "Přeložte toto z angličtiny do češtiny:\nanglicky: ",
     "is": "Þýddu þetta úr ensku yfir á íslensku:\nEnska: ",
+    "ig": "Tụgharịa asụsụ a n'asụsụ Igbo ka ọ bụrụ bekee:\nBekee: ",
     "zh": "将其从英文翻译成中文：\n英语：",
     "ja": "これを英語から日本語に翻訳してください:\n英語：",
+    "mg": "Adikao amin'ny teny anglisy amin'ny teny malagasy ity:\nAnglisy: ",
     "ru": "Переведите это с английского на русский:\nАнглийский: ",
     "uk": "Перекладіть це з англійської на українську:\nАнглійська: ",
     "ha": "Fassara wannan daga Turanci zuwa Hausa:\nTuranci: ",
+    "sw": "Tafsiri hii kutoka Kiswahili hadi Kiingereza:\nKiingereza: ",
     "yo": "Jọwọ tumọ gbolohun yii lati Gẹẹsi si Yorùbá::\nGẹẹsi: ",
 }
 
 SUFFIX = {
+    "ar": "\nالعربية:",
     "en": "\nEnglish:",
     "de": "\nDeutsch:",
     "fr": "\nFrançais :",
     "cs": "\nčesky:",
     "is": "\nÍslenska:",
+    "ig": "\nIgbo:",
     "zh": "\n中文：",
     "ja": "\n日本語：",
+    "ma": "\nMalagasy:",
     "ru": "\nРусский:",
     "uk": "\nУкраїнська:",
     "ha": "\nHausa:",
+    "sw": "\nKiswahili:",
     "yo": "\nYorùbá:",
 }
 
