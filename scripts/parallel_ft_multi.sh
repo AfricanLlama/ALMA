@@ -1,5 +1,6 @@
-OUTPUT_DIR=${1:-"./pretrain-en-yor-default-lora"}
-pairs=${2:-"en-yo,yo-en"}
+MODEL=${1:-"llama-lang-adapt/pretrain-multi-default"}
+OUTPUT_DIR=${2:-"./multi-example"}
+pairs=${3:-"en-ar,en-ig,en-mg,en-sw,en-yo,ar-en,ig-en,mg-en,sw-en,yo-en"}
 export HF_DATASETS_CACHE=".cache/huggingface_cache/datasets"
 export TRANSFORMERS_CACHE=".cache/models/"
 
@@ -7,7 +8,7 @@ export TRANSFORMERS_CACHE=".cache/models/"
 port=$(( RANDOM % (50000 - 30000 + 1 ) + 30000 ))
 accelerate launch --main_process_port ${port} --config_file configs/deepspeed_train_config.yaml \
      run_llmmt.py \
-    --model_name_or_path llama-lang-adapt/pretrain-en-yor-default \
+    --model_name_or_path ${MODEL} \
     --mmt_data_path ./data/ \
     --do_train \
     --do_eval \

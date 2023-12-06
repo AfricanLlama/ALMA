@@ -1,4 +1,7 @@
-OUTPUT_DIR=${1:-"./outputs-mt-yor-tokenizer-wechsel"}
+MODEL_NAME=${1}
+MODEL="${MODEL_NAME//\//-}"
+OUTPUT_DIR=./outputs-${MODEL}
+MODEL_PATH="/mnt/disk/llama-lang-adapt/data/models/${MODEL_NAME}"
 TEST_PAIRS=${2:-"yo-en,en-yo"}
 export HF_DATASETS_CACHE=".cache/huggingface_cache/datasets"
 export TRANSFORMERS_CACHE=".cache/models/"
@@ -8,7 +11,7 @@ port=$(( RANDOM % (50000 - 30000 + 1 ) + 30000 ))
 ## Generation
 python \
     run_llmmt.py \
-    --model_name_or_path "llama-lang-adapt/mt-yor-tokenizer-wechsel" \
+    --model_name_or_path ${MODEL_PATH} \
     --do_predict \
     --low_cpu_mem_usage \
     --language_pairs ${TEST_PAIRS} \
@@ -20,7 +23,7 @@ python \
     --max_source_length 256 \
     --fp16 \
     --seed 42 \
-    --num_beams 5 \
+    --num_beams 1 \
     --overwrite_cache \
     --overwrite_output_dir \
     --multi_gpu_one_model 

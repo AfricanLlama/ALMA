@@ -15,7 +15,6 @@ accelerate launch --main_process_port ${port} --config_file configs/deepspeed_tr
     --lora_rank ${LORA_RANK} \
     --do_train \
     --do_eval \
-    --do_predict \
     --language_pairs ${pairs} \
     --load_best_model_at_end \
     --low_cpu_mem_usage \

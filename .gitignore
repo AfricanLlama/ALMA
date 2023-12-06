@@ -2,6 +2,10 @@
 .cache/
 __pycache__/
 
+## IDE Stuff
+.idea/
+.vscode/
+
 ## Model outputs and data
 outputs*/
 data/
@@ -13,3 +17,6 @@ models/
 ## Jupyter Notebook
 .ipynb_checkpoints/
 *.ipynb
+
+## Helper Files
+download_model.py
