@@ -66,22 +66,34 @@ class SavePeftModelCallback(TrainerCallback):
         return control
 
 LANG_TABLE = {
+    "af": "Afrikaans",
+    "am": "Amharic",
     "ar": "Arabic",
+    "cs": "Czech",
     "en": "English",
     "de": "German",
     "fr": "French",
-    "cs": "Czech",
+    "ha": "Hausa",
     "ig": "Igbo",
+    "ki": "Kinyarwanda",
     "is": "Icelandic",
+    "ny": "Chichewa",
+    "or": "Afaan Oromoo",
+    "po": "Portuguese",
     "zh": "Chinese",
     "ja": "Japanese",
     "mg": "Malagasy",
     "ru": "Russian",
     "uk": "Ukrainian",
-    "ha": "Hausa",
     "ro": "Romanian",
+    "sm": "Somali",
+    "sn": "Shona",
+    "st": "Sesotho",
     "sw": "Swahili",
+    "ti": "Tigrinya",
+    "xh": "Xhosa",
     "yo": "Yoruba",
+    "zu": "Zulu",
 }
 
 ## Prefix and suffix for prompt in target language (only from English to target language if the target is non-English)
